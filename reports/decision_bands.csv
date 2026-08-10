@@ -1,0 +1,5 @@
+band,accounts,share_pct,mean_score,observed_risk_rate_pct,mean_utilisation,mean_baseline_exposure,mean_net_benefit
+auto increase,45473,17.83,718.5,0.048,0.207,136150.0,28748.0
+manual review,53632,21.03,701.5,0.326,0.559,151836.0,20675.0
+hold,113900,44.67,653.9,0.989,0.543,128393.0,17881.0
+decrease or monitor,42001,16.47,597.4,5.519,0.573,111750.0,18196.0

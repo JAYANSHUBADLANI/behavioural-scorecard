@@ -1,0 +1,4 @@
+risk_outcome,eligible_rows,events,event_rate_pct,treated_rows,treated_events,control_event_rate_pct,treated_event_rate_pct,estimable
+dpd90,363239,3646,1.004,18508,65,1.039,0.351,False
+dpd30,349731,4391,1.256,18289,106,1.293,0.58,True
+overlimit,304967,39694,13.016,13004,4397,12.09,33.813,True

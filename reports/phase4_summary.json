@@ -1,0 +1,251 @@
+{
+  "decision_bands": [
+    {
+      "band": "auto increase",
+      "accounts": 45473,
+      "share_pct": 17.83,
+      "mean_score": 718.5,
+      "observed_risk_rate_pct": 0.048,
+      "mean_utilisation": 0.207,
+      "mean_baseline_exposure": 136150.0,
+      "mean_net_benefit": 28748.0
+    },
+    {
+      "band": "manual review",
+      "accounts": 53632,
+      "share_pct": 21.03,
+      "mean_score": 701.5,
+      "observed_risk_rate_pct": 0.326,
+      "mean_utilisation": 0.559,
+      "mean_baseline_exposure": 151836.0,
+      "mean_net_benefit": 20675.0
+    },
+    {
+      "band": "hold",
+      "accounts": 113900,
+      "share_pct": 44.67,
+      "mean_score": 653.9,
+      "observed_risk_rate_pct": 0.989,
+      "mean_utilisation": 0.543,
+      "mean_baseline_exposure": 128393.0,
+      "mean_net_benefit": 17881.0
+    },
+    {
+      "band": "decrease or monitor",
+      "accounts": 42001,
+      "share_pct": 16.47,
+      "mean_score": 597.4,
+      "observed_risk_rate_pct": 5.519,
+      "mean_utilisation": 0.573,
+      "mean_baseline_exposure": 111750.0,
+      "mean_net_benefit": 18196.0
+    }
+  ],
+  "policy_comparison_matched_depth": [
+    {
+      "policy": "champion, uplift net benefit",
+      "depth": 0.1,
+      "value_per_account": 11740.9,
+      "matched_accounts": 217874,
+      "effective_sample_size": 128239.4,
+      "treated_share_pct": 10.0
+    },
+    {
+      "policy": "champion, uplift net benefit",
+      "depth": 0.2,
+      "value_per_account": 13717.57,
+      "matched_accounts": 194947,
+      "effective_sample_size": 82391.5,
+      "treated_share_pct": 20.0
+    },
+    {
+      "policy": "champion, uplift net benefit",
+      "depth": 0.3,
+      "value_per_account": 15835.84,
+      "matched_accounts": 172191,
+      "effective_sample_size": 57517.6,
+      "treated_share_pct": 30.0
+    },
+    {
+      "policy": "challenger, utilisation rule",
+      "depth": 0.1,
+      "value_per_account": 11850.18,
+      "matched_accounts": 219426,
+      "effective_sample_size": 114744.0,
+      "treated_share_pct": 10.0
+    },
+    {
+      "policy": "challenger, utilisation rule",
+      "depth": 0.2,
+      "value_per_account": 14030.15,
+      "matched_accounts": 198321,
+      "effective_sample_size": 71532.6,
+      "treated_share_pct": 20.0
+    },
+    {
+      "policy": "challenger, utilisation rule",
+      "depth": 0.3,
+      "value_per_account": 16165.43,
+      "matched_accounts": 177977,
+      "effective_sample_size": 50108.9,
+      "treated_share_pct": 30.0
+    },
+    {
+      "policy": "scorecard only",
+      "depth": 0.1,
+      "value_per_account": 12040.16,
+      "matched_accounts": 217422,
+      "effective_sample_size": 142641.0,
+      "treated_share_pct": 10.0
+    },
+    {
+      "policy": "scorecard only",
+      "depth": 0.2,
+      "value_per_account": 14184.72,
+      "matched_accounts": 194479,
+      "effective_sample_size": 88105.8,
+      "treated_share_pct": 20.0
+    },
+    {
+      "policy": "scorecard only",
+      "depth": 0.3,
+      "value_per_account": 16691.12,
+      "matched_accounts": 172065,
+      "effective_sample_size": 59375.5,
+      "treated_share_pct": 30.0
+    },
+    {
+      "policy": "random",
+      "depth": 0.1,
+      "value_per_account": 11670.54,
+      "matched_accounts": 218630,
+      "effective_sample_size": 121489.4,
+      "treated_share_pct": 10.0
+    },
+    {
+      "policy": "random",
+      "depth": 0.2,
+      "value_per_account": 13259.4,
+      "matched_accounts": 195857,
+      "effective_sample_size": 79426.4,
+      "treated_share_pct": 20.0
+    },
+    {
+      "policy": "random",
+      "depth": 0.3,
+      "value_per_account": 14950.27,
+      "matched_accounts": 173115,
+      "effective_sample_size": 56335.9,
+      "treated_share_pct": 30.0
+    }
+  ],
+  "best_policy_at_20_percent_depth": "scorecard only",
+  "policy_comparison": [
+    {
+      "policy": "treat all",
+      "value_per_account": 32523.44,
+      "matched_accounts": 13730,
+      "effective_sample_size": 11178.3,
+      "treated_share_pct": 100.0,
+      "ci_low": 31913.35,
+      "ci_high": 33105.05
+    },
+    {
+      "policy": "scorecard only",
+      "value_per_account": 16688.49,
+      "matched_accounts": 172116,
+      "effective_sample_size": 59425.3,
+      "treated_share_pct": 29.98,
+      "ci_low": 16336.79,
+      "ci_high": 17032.03
+    },
+    {
+      "policy": "random 30 percent",
+      "value_per_account": 15066.17,
+      "matched_accounts": 172997,
+      "effective_sample_size": 56109.3,
+      "treated_share_pct": 30.04,
+      "ci_low": 14789.3,
+      "ci_high": 15365.04
+    },
+    {
+      "policy": "challenger, utilisation rule",
+      "value_per_account": 13604.01,
+      "matched_accounts": 203401,
+      "effective_sample_size": 79059.0,
+      "treated_share_pct": 17.61,
+      "ci_low": 13371.14,
+      "ci_high": 13903.94
+    },
+    {
+      "policy": "champion, uplift bands",
+      "value_per_account": 13382.52,
+      "matched_accounts": 198539,
+      "effective_sample_size": 111402.0,
+      "treated_share_pct": 17.83,
+      "ci_low": 13108.13,
+      "ci_high": 13662.84
+    },
+    {
+      "policy": "treat none",
+      "value_per_account": 10125.28,
+      "matched_accounts": 241276,
+      "effective_sample_size": 240766.3,
+      "treated_share_pct": 0.0,
+      "ci_low": 9998.51,
+      "ci_high": 10248.8
+    }
+  ],
+  "exposure_by_band": [
+    {
+      "band": "auto increase",
+      "accounts": 45473,
+      "limit_granted": 5115712500.0,
+      "incremental_exposure": 6718119444.204985,
+      "incremental_revenue": 1337545591.5627184,
+      "conservative_expected_loss": 30284668.336152636,
+      "existing_exposure": 6191156224.0
+    },
+    {
+      "band": "manual review",
+      "accounts": 53632,
+      "limit_granted": 0.0,
+      "incremental_exposure": 0.0,
+      "incremental_revenue": 0.0,
+      "conservative_expected_loss": 0.0,
+      "existing_exposure": 8143261696.0
+    },
+    {
+      "band": "hold",
+      "accounts": 113900,
+      "limit_granted": 0.0,
+      "incremental_exposure": 0.0,
+      "incremental_revenue": 0.0,
+      "conservative_expected_loss": 0.0,
+      "existing_exposure": 14623988736.0
+    },
+    {
+      "band": "decrease or monitor",
+      "accounts": 42001,
+      "limit_granted": 0.0,
+      "incremental_exposure": 0.0,
+      "incremental_revenue": 0.0,
+      "conservative_expected_loss": 0.0,
+      "existing_exposure": 4693599744.0
+    }
+  ],
+  "proposed_limit_increase": 112500.0,
+  "verdict": {
+    "champion_value_per_account": 13382.52,
+    "challenger_value_per_account": 13604.01,
+    "champion_beats_challenger": false,
+    "confidence_intervals_overlap": true,
+    "conclusion": "the uplift policy does not separate from the utilisation rule once the intervals are taken into account"
+  },
+  "assumptions": {
+    "annual_interest_margin": 0.18,
+    "interchange_rate": 0.015,
+    "credit_conversion_factor": 0.65,
+    "loss_given_default": 0.75
+  }
+}

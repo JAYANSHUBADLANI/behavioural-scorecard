@@ -1,0 +1,7 @@
+policy,value_per_account,matched_accounts,effective_sample_size,treated_share_pct,ci_low,ci_high
+treat all,32523.44,13730,11178.3,100.0,31913.35,33105.05
+scorecard only,16688.49,172116,59425.3,29.98,16336.79,17032.03
+random 30 percent,15066.17,172997,56109.3,30.04,14789.3,15365.04
+"challenger, utilisation rule",13604.01,203401,79059.0,17.61,13371.14,13903.94
+"champion, uplift bands",13382.52,198539,111402.0,17.83,13108.13,13662.84
+treat none,10125.28,241276,240766.3,0.0,9998.51,10248.8

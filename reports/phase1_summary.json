@@ -1,0 +1,86 @@
+{
+  "window": {
+    "outcome_window_months": 12,
+    "dpd_threshold": 90,
+    "min_pre_history_months": 12,
+    "observation_step_months": 3,
+    "observation_points": [
+      -13,
+      -16,
+      -19,
+      -22,
+      -25,
+      -28,
+      -31,
+      -34,
+      -37,
+      -40,
+      -43,
+      -46,
+      -49,
+      -52,
+      -55,
+      -58
+    ],
+    "n_observation_points": 16
+  },
+  "panel": {
+    "contracts": 104307,
+    "clients": 103558,
+    "contract_months": 3840312,
+    "months_covered": [
+      -96,
+      -1
+    ],
+    "contracts_ever_at_threshold": 1806
+  },
+  "population": {
+    "rows": 363246,
+    "unique_contracts": 38500,
+    "rows_per_contract": 9.43,
+    "bads": 3646,
+    "bad_rate_pct": 1.004,
+    "unique_bad_contracts": 1235,
+    "treated_rows": 18508,
+    "treated_pct": 5.1
+  },
+  "exclusions_total": {
+    "not_observed_at_observation_point": 1001879,
+    "insufficient_pre_history": 124000,
+    "insufficient_outcome_window": 19688,
+    "no_active_credit_limit": 142919,
+    "already_delinquent_at_observation": 17180,
+    "eligible": 363246,
+    "bads": 3646,
+    "treated": 18508
+  },
+  "risk_outcomes": {
+    "primary_dpd90": {
+      "rows": 363246,
+      "bads": 3646,
+      "bad_rate_pct": 1.004,
+      "treated_rows": 18508,
+      "treated_bads": 65,
+      "treated_bad_rate_pct": 0.351,
+      "control_bad_rate_pct": 1.039
+    },
+    "soft_dpd30": {
+      "rows": 349738,
+      "bads": 4391,
+      "bad_rate_pct": 1.256,
+      "treated_rows": 18289,
+      "treated_bads": 106,
+      "treated_bad_rate_pct": 0.58,
+      "control_bad_rate_pct": 1.293
+    },
+    "overlimit": {
+      "rows": 304974,
+      "bads": 39694,
+      "bad_rate_pct": 13.016,
+      "treated_rows": 13004,
+      "treated_bads": 4397,
+      "treated_bad_rate_pct": 33.813,
+      "control_bad_rate_pct": 12.089
+    }
+  }
+}

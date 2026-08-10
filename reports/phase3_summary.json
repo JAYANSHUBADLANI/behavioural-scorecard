@@ -1,0 +1,237 @@
+{
+  "risk_outcome_used": "dpd30",
+  "risk_outcome_note": "90 plus delinquency has only 65 treated events, which cannot support an incremental risk estimate, so the risk arm runs on 30 plus delinquency",
+  "treatment_power": [
+    {
+      "risk_outcome": "dpd90",
+      "eligible_rows": 363239,
+      "events": 3646,
+      "event_rate_pct": 1.004,
+      "treated_rows": 18508,
+      "treated_events": 65,
+      "control_event_rate_pct": 1.039,
+      "treated_event_rate_pct": 0.351,
+      "estimable": false
+    },
+    {
+      "risk_outcome": "dpd30",
+      "eligible_rows": 349731,
+      "events": 4391,
+      "event_rate_pct": 1.256,
+      "treated_rows": 18289,
+      "treated_events": 106,
+      "control_event_rate_pct": 1.293,
+      "treated_event_rate_pct": 0.58,
+      "estimable": true
+    },
+    {
+      "risk_outcome": "overlimit",
+      "eligible_rows": 304967,
+      "events": 39694,
+      "event_rate_pct": 13.016,
+      "treated_rows": 13004,
+      "treated_events": 4397,
+      "control_event_rate_pct": 12.09,
+      "treated_event_rate_pct": 33.813,
+      "estimable": true
+    }
+  ],
+  "propensity": {
+    "propensity_auc": 0.833,
+    "treated_mean_propensity": 0.185,
+    "control_mean_propensity": 0.0446,
+    "rows_before_trim": 349731,
+    "rows_after_trim": 255006,
+    "treated_after_trim": 13730
+  },
+  "proposed_limit_increase": 112500.0,
+  "effects": {
+    "revenue": {
+      "naive_ate": 23407.086378,
+      "ipw_ate": 21903.322709,
+      "mean_cate": 22118.613807,
+      "cate_p10": 13955.566647,
+      "cate_p90": 32011.151784
+    },
+    "risk": {
+      "naive_ate": -0.008783,
+      "ipw_ate": -0.007408,
+      "mean_cate": -0.009231,
+      "cate_p10": -0.027585,
+      "cate_p90": 0.002427
+    },
+    "balance": {
+      "naive_ate": 120117.635922,
+      "ipw_ate": 112830.686606,
+      "mean_cate": 113828.988753,
+      "cate_p10": 69040.125202,
+      "cate_p90": 165023.95164
+    }
+  },
+  "qini": {
+    "risk_by_risk_cate": {
+      "qini_auc": -18.62,
+      "random_auc": -60.29,
+      "qini_coefficient": 41.67,
+      "lift_over_random": 0.3089
+    },
+    "revenue_by_net_benefit": {
+      "qini_auc": 177475666.18,
+      "random_auc": 160689647.98,
+      "qini_coefficient": 16786018.2,
+      "lift_over_random": 1.1045
+    },
+    "revenue_by_random": {
+      "qini_auc": 159963594.36,
+      "random_auc": 160689647.98,
+      "qini_coefficient": -726053.63,
+      "lift_over_random": 0.9955
+    }
+  },
+  "heterogeneity": {
+    "bands": 10,
+    "rank_correlation": -0.3576,
+    "observed_effect_spread": 0.011418,
+    "estimated_effect_spread": 27270.16
+  },
+  "exposure_impact": [
+    {
+      "targeted_share": 0.05,
+      "accounts": 12750,
+      "limit_granted": 1434375000.0,
+      "incremental_revenue": 505468328.15591955,
+      "incremental_exposure": 2528849199.121046,
+      "incremental_expected_loss": -9743631.707925092,
+      "net_benefit": 515211959.8638447,
+      "revenue_per_unit_exposure": 0.19988,
+      "scenario": "estimated"
+    },
+    {
+      "targeted_share": 0.1,
+      "accounts": 25500,
+      "limit_granted": 2868750000.0,
+      "incremental_revenue": 929311473.1154376,
+      "incremental_exposure": 4654820039.427253,
+      "incremental_expected_loss": -12757412.497182563,
+      "net_benefit": 942068885.6126202,
+      "revenue_per_unit_exposure": 0.19964,
+      "scenario": "estimated"
+    },
+    {
+      "targeted_share": 0.2,
+      "accounts": 51001,
+      "limit_granted": 5737612500.0,
+      "incremental_revenue": 1676045101.999273,
+      "incremental_exposure": 8461169430.662933,
+      "incremental_expected_loss": -28815309.804102812,
+      "net_benefit": 1704860411.803376,
+      "revenue_per_unit_exposure": 0.19809,
+      "scenario": "estimated"
+    },
+    {
+      "targeted_share": 0.3,
+      "accounts": 76501,
+      "limit_granted": 8606362500.0,
+      "incremental_revenue": 2335850621.3775797,
+      "incremental_exposure": 11859996848.921852,
+      "incremental_expected_loss": -45421853.985912345,
+      "net_benefit": 2381272475.363493,
+      "revenue_per_unit_exposure": 0.19695,
+      "scenario": "estimated"
+    },
+    {
+      "targeted_share": 0.5,
+      "accounts": 127503,
+      "limit_granted": 14344087500.0,
+      "incremental_revenue": 3498422391.107484,
+      "incremental_exposure": 17980877244.82237,
+      "incremental_expected_loss": -72829700.13464563,
+      "net_benefit": 3571252091.24213,
+      "revenue_per_unit_exposure": 0.19456,
+      "scenario": "estimated"
+    },
+    {
+      "targeted_share": 1.0,
+      "accounts": 255006,
+      "limit_granted": 28688175000.0,
+      "incremental_revenue": 5640379232.369432,
+      "incremental_exposure": 31396028651.380367,
+      "incremental_expected_loss": -58118939.12724598,
+      "net_benefit": 5698498171.496676,
+      "revenue_per_unit_exposure": 0.17965,
+      "scenario": "estimated"
+    },
+    {
+      "targeted_share": 0.05,
+      "accounts": 12750,
+      "limit_granted": 1434375000.0,
+      "incremental_revenue": 512616094.82908154,
+      "incremental_exposure": 2546085561.6792054,
+      "incremental_expected_loss": 10796968.023613898,
+      "net_benefit": 501819126.80546767,
+      "revenue_per_unit_exposure": 0.20133,
+      "scenario": "conservative"
+    },
+    {
+      "targeted_share": 0.1,
+      "accounts": 25500,
+      "limit_granted": 2868750000.0,
+      "incremental_revenue": 938136354.0851376,
+      "incremental_exposure": 4677760017.07836,
+      "incremental_expected_loss": 21994631.016031496,
+      "net_benefit": 916141723.0691061,
+      "revenue_per_unit_exposure": 0.20055,
+      "scenario": "conservative"
+    },
+    {
+      "targeted_share": 0.2,
+      "accounts": 51001,
+      "limit_granted": 5737612500.0,
+      "incremental_revenue": 1683706937.2348866,
+      "incremental_exposure": 8445295750.636681,
+      "incremental_expected_loss": 50469242.519126825,
+      "net_benefit": 1633237694.71576,
+      "revenue_per_unit_exposure": 0.19937,
+      "scenario": "conservative"
+    },
+    {
+      "targeted_share": 0.3,
+      "accounts": 76501,
+      "limit_granted": 8606362500.0,
+      "incremental_revenue": 2337547362.228234,
+      "incremental_exposure": 11787892922.681974,
+      "incremental_expected_loss": 80567327.13785025,
+      "net_benefit": 2256980035.090384,
+      "revenue_per_unit_exposure": 0.1983,
+      "scenario": "conservative"
+    },
+    {
+      "targeted_share": 0.5,
+      "accounts": 127503,
+      "limit_granted": 14344087500.0,
+      "incremental_revenue": 3494616583.611799,
+      "incremental_exposure": 17890652718.461304,
+      "incremental_expected_loss": 149966263.7165512,
+      "net_benefit": 3344650319.8952475,
+      "revenue_per_unit_exposure": 0.19533,
+      "scenario": "conservative"
+    },
+    {
+      "targeted_share": 1.0,
+      "accounts": 255006,
+      "limit_granted": 28688175000.0,
+      "incremental_revenue": 5640379232.369432,
+      "incremental_exposure": 31396028651.38036,
+      "incremental_expected_loss": 423359938.05994713,
+      "net_benefit": 5217019294.309486,
+      "revenue_per_unit_exposure": 0.17965,
+      "scenario": "conservative"
+    }
+  ],
+  "assumptions": {
+    "annual_interest_margin": 0.18,
+    "interchange_rate": 0.015,
+    "credit_conversion_factor": 0.65,
+    "loss_given_default": 0.75
+  }
+}

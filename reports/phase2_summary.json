@@ -1,0 +1,159 @@
+{
+  "features_built": 44,
+  "features_retained": 17,
+  "retained": [
+    "util_trend_ratio",
+    "payment_ratio_mean_3m",
+    "months_since_arrears",
+    "util_slope_12m",
+    "util_std_12m",
+    "dpd_max_ever",
+    "payment_ratio_mean_12m",
+    "months_zero_payment_6m",
+    "util_at_observation",
+    "tenure_months",
+    "months_since_overlimit",
+    "atm_share_3m",
+    "drawings_to_limit_6m",
+    "limit_at_observation_log",
+    "atm_share_12m",
+    "util_std_3m",
+    "months_zero_payment_3m"
+  ],
+  "samples": {
+    "train": {
+      "rows": 167451,
+      "contracts": 19767,
+      "bads": 2479
+    },
+    "test": {
+      "rows": 56153,
+      "contracts": 6590,
+      "bads": 823
+    },
+    "out_of_time": {
+      "rows": 139635,
+      "contracts": 37384,
+      "bads": 344
+    }
+  },
+  "performance": {
+    "train": {
+      "accounts": 167451,
+      "bads": 2479,
+      "bad_rate_pct": 1.48,
+      "gini": 0.8042,
+      "ks": 0.6688,
+      "calibration_error_pct": 0.1676,
+      "observation_months": [
+        -58,
+        -28
+      ]
+    },
+    "test": {
+      "accounts": 56153,
+      "bads": 823,
+      "bad_rate_pct": 1.466,
+      "gini": 0.7945,
+      "ks": 0.6548,
+      "calibration_error_pct": 0.182,
+      "observation_months": [
+        -58,
+        -28
+      ]
+    },
+    "out_of_time": {
+      "accounts": 139635,
+      "bads": 344,
+      "bad_rate_pct": 0.246,
+      "gini": 0.7973,
+      "ks": 0.6324,
+      "calibration_error_pct": 0.2097,
+      "observation_months": [
+        -25,
+        -13
+      ]
+    },
+    "stability": {
+      "score_psi_train_vs_test": 0.0006,
+      "score_psi_train_vs_out_of_time": 0.4404,
+      "bad_rate_ratio_train_over_out_of_time": 6.01
+    },
+    "out_of_time_recalibrated": {
+      "intercept_shift": -0.5834,
+      "gini": 0.7973,
+      "ks": 0.6324,
+      "calibration_error_pct_before": 0.2097,
+      "calibration_error_pct_after": 0.0531
+    }
+  },
+  "top_feature_psi": [
+    {
+      "feature": "tenure_months",
+      "psi": 1.5418729714270898
+    },
+    {
+      "feature": "months_since_arrears",
+      "psi": 0.44620457340595876
+    },
+    {
+      "feature": "balance_slope_12m",
+      "psi": 0.3333924864316964
+    },
+    {
+      "feature": "atm_share_3m",
+      "psi": 0.29561086758300414
+    },
+    {
+      "feature": "util_slope_12m",
+      "psi": 0.27922838707311015
+    }
+  ],
+  "segments_out_of_time": [
+    {
+      "sample": "out_of_time",
+      "segment": "all scoreable",
+      "rows": 139635,
+      "bads": 344,
+      "bad_rate_pct": 0.2464,
+      "gini": 0.7973,
+      "ks": 0.6324
+    },
+    {
+      "sample": "out_of_time",
+      "segment": "active, balance > 0",
+      "rows": 51305,
+      "bads": 322,
+      "bad_rate_pct": 0.6276,
+      "gini": 0.7478,
+      "ks": 0.6229
+    },
+    {
+      "sample": "out_of_time",
+      "segment": "dormant, balance == 0",
+      "rows": 88330,
+      "bads": 22,
+      "bad_rate_pct": 0.0249,
+      "gini": 0.3715,
+      "ks": 0.4374
+    },
+    {
+      "sample": "out_of_time",
+      "segment": "no arrears at observation",
+      "rows": 79321,
+      "bads": 62,
+      "bad_rate_pct": 0.0782,
+      "gini": 0.5688,
+      "ks": 0.4995
+    },
+    {
+      "sample": "out_of_time",
+      "segment": "in arrears at observation",
+      "rows": 60314,
+      "bads": 282,
+      "bad_rate_pct": 0.4676,
+      "gini": 0.8389,
+      "ks": 0.6999
+    }
+  ]
+}

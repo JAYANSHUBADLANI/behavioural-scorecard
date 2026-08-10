@@ -1,0 +1,13 @@
+policy,depth,value_per_account,matched_accounts,effective_sample_size,treated_share_pct
+"champion, uplift net benefit",0.1,11740.9,217874,128239.4,10.0
+"champion, uplift net benefit",0.2,13717.57,194947,82391.5,20.0
+"champion, uplift net benefit",0.3,15835.84,172191,57517.6,30.0
+"challenger, utilisation rule",0.1,11850.18,219426,114744.0,10.0
+"challenger, utilisation rule",0.2,14030.15,198321,71532.6,20.0
+"challenger, utilisation rule",0.3,16165.43,177977,50108.9,30.0
+scorecard only,0.1,12040.16,217422,142641.0,10.0
+scorecard only,0.2,14184.72,194479,88105.8,20.0
+scorecard only,0.3,16691.12,172065,59375.5,30.0
+random,0.1,11670.54,218630,121489.4,10.0
+random,0.2,13259.4,195857,79426.4,20.0
+random,0.3,14950.27,173115,56335.9,30.0

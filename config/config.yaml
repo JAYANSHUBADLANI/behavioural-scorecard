@@ -1,0 +1,83 @@
+paths:
+  raw_dir: "../Home Credit Default Risk Dataset"
+  interim_dir: "data/interim"
+  processed_dir: "data/processed"
+  reports_dir: "reports"
+
+panel:
+  first_month: -96
+  last_month: -1
+
+target:
+  outcome_window_months: 12
+  dpd_threshold: 90
+  min_pre_history_months: 12
+  observation_step_months: 3
+  earliest_observation_month: -60
+  require_full_outcome_window: true
+  exclude_already_delinquent: true
+  require_active_limit_at_observation: true
+  recent_state_months: 3
+
+secondary_targets:
+  overlimit_utilisation: 1.0
+  soft_dpd_threshold: 30
+
+treatment:
+  lookback_months: 12
+  min_increase_ratio: 0.0
+
+split:
+  test_size: 0.25
+  random_state: 42
+  group_column: "SK_ID_PREV"
+
+features:
+  lookbacks: [3, 6, 12]
+
+binning:
+  max_prebins: 20
+  min_bin_fraction: 0.03
+  min_bin_bads: 5
+  enforce_monotonic: true
+
+model:
+  min_iv: 0.02
+  max_correlation: 0.75
+  regularisation_C: 1.0
+
+scaling:
+  base_score: 600.0
+  base_odds: 50.0
+  pdo: 20.0
+
+validation:
+  out_of_time_from_month: -25
+  score_bands: 10
+  psi_bins: 10
+
+economics:
+  annual_interest_margin: 0.18
+  interchange_rate: 0.015
+  credit_conversion_factor: 0.65
+  loss_given_default: 0.75
+
+uplift:
+  propensity_trim: 0.02
+  n_estimators: 200
+  max_leaf_nodes: 31
+  learning_rate: 0.08
+  random_state: 42
+  qini_bins: 20
+  feature_offset_months: 12
+
+strategy:
+  auto_increase_score_percentile: 0.70
+  review_score_percentile: 0.40
+  net_benefit_percentile: 0.60
+  deteriorating_dpd: 1
+  monitor_score_percentile: 0.10
+  challenger_utilisation_low: 0.30
+  challenger_utilisation_high: 0.90
+  ipw_clip: 0.05
+  bootstrap_samples: 200

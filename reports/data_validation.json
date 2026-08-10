@@ -1,0 +1,31 @@
+{
+  "validation": {
+    "source": "credit_card_balance.csv",
+    "header_fields": 23,
+    "total_lines": 3840313,
+    "data_rows_read": 3840312,
+    "rows_kept": 3840312,
+    "rows_quarantined": 0,
+    "quarantine_path": null,
+    "quarantined_line_numbers": []
+  },
+  "profile": {
+    "table": "credit_card_balance",
+    "rows": 3840312,
+    "columns": 23,
+    "memory_mb": 334.1,
+    "null_rate_pct": {
+      "AMT_DRAWINGS_ATM_CURRENT": 19.525,
+      "AMT_DRAWINGS_OTHER_CURRENT": 19.525,
+      "AMT_DRAWINGS_POS_CURRENT": 19.525,
+      "AMT_INST_MIN_REGULARITY": 7.948,
+      "AMT_PAYMENT_CURRENT": 19.998,
+      "CNT_DRAWINGS_ATM_CURRENT": 19.525,
+      "CNT_DRAWINGS_OTHER_CURRENT": 19.525,
+      "CNT_DRAWINGS_POS_CURRENT": 19.525,
+      "CNT_INSTALMENT_MATURE_CUM": 7.948
+    },
+    "unique_SK_ID_PREV": 104307,
+    "unique_SK_ID_CURR": 103558
+  }
+}

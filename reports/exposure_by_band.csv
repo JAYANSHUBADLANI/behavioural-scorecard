@@ -1,0 +1,5 @@
+band,accounts,limit_granted,incremental_exposure,incremental_revenue,conservative_expected_loss,existing_exposure
+auto increase,45473,5115712500.0,6718119444.204985,1337545591.5627184,30284668.336152636,6191156224.0
+manual review,53632,0.0,0.0,0.0,0.0,8143261696.0
+hold,113900,0.0,0.0,0.0,0.0,14623988736.0
+decrease or monitor,42001,0.0,0.0,0.0,0.0,4693599744.0
