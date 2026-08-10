@@ -257,8 +257,8 @@ def qini_curve(
 def qini_coefficient(curve: pd.DataFrame) -> Dict[str, float]:
     """Area between the Qini curve and the random targeting line."""
     x = curve["fraction_targeted"].to_numpy()
-    actual = np.trapz(curve["qini"].to_numpy(), x)
-    random = np.trapz(curve["random"].to_numpy(), x)
+    actual = np.trapezoid(curve["qini"].to_numpy(), x)
+    random = np.trapezoid(curve["random"].to_numpy(), x)
     return {
         "qini_auc": round(float(actual), 2),
         "random_auc": round(float(random), 2),

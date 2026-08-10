@@ -59,21 +59,21 @@ Reproduced by `reports/window_sensitivity.csv`:
 | design | window | DPD | rows | bads | bad rate | treated bads |
 |---|---|---|---|---|---|---|
 | single point, obs -7 | 6m | 90 | 24,065 | 15 | 0.062% | 2 |
-| single point, obs -25 | 12m | 90 | 27,597 | 100 | 0.362% | 2 |
-| stacked, -7 to -58 step 3 | 6m | 90 | 434,810 | 2,258 | 0.519% | 32 |
-| **stacked, -13 to -58 step 3** | **12m** | **90** | **363,239** | **3,646** | **1.004%** | **65** |
-| stacked, -13 to -58 step 3 | 12m | 30 | 349,731 | 4,391 | 1.256% | 106 |
+| single point, obs -25 | 12m | 90 | 27,598 | 100 | 0.362% | 2 |
+| stacked, -7 to -58 step 3 | 6m | 90 | 434,815 | 2,258 | 0.519% | 32 |
+| **stacked, -13 to -58 step 3** | **12m** | **90** | **363,246** | **3,646** | **1.004%** | **65** |
+| stacked, -13 to -58 step 3 | 12m | 30 | 349,738 | 4,391 | 1.256% | 106 |
 
 I took the bolded row as the modelling population: 16 observation points, 12 month outcome
 window, 90+ DPD.
 
 ## Phase 1: the labelled population
 
-Panel after validation: 104,307 contracts, 103,558 clients, 3,840,309 contract months spanning
+Panel after validation: 104,307 contracts, 103,558 clients, 3,840,312 contract months spanning
 months -96 to -1. Accounts hold essentially one card each (mean 1.01), so contract level and
 client level are close to the same thing here.
 
-Labelled population: 363,239 account observations across 38,498 unique contracts, 9.44 rows per
+Labelled population: 363,246 account observations across 38,500 unique contracts, 9.43 rows per
 contract on average. 3,646 bads at a 1.004% bad rate, drawn from 1,235 unique bad contracts.
 18,508 rows (5.1%) had a credit limit increase in the 12 months up to the observation point.
 
@@ -83,10 +83,10 @@ The exclusion ledger reconciles exactly to the panel, which is the point of keep
 |---|---|
 | not observed at observation point | 1,001,879 |
 | insufficient pre history | 124,000 |
-| insufficient outcome window | 19,695 |
+| insufficient outcome window | 19,688 |
 | no active credit limit | 142,919 |
 | already delinquent at observation | 17,180 |
-| **eligible** | **363,239** |
+| **eligible** | **363,246** |
 | total | 1,668,912 = 16 points x 104,307 contracts |
 
 The no active credit limit rule was added after Phase 2 caught the problem it fixes, described
@@ -107,10 +107,10 @@ as an out of time sample.
 |---|---|---|---|---|---|---|
 | train | 167,451 | 19,767 | 2,479 | 1.480% | 0.804 | 0.669 |
 | test, in time, grouped by contract | 56,153 | 6,590 | 823 | 1.466% | 0.795 | 0.655 |
-| out of time, months -25 to -13 | 139,635 | 37,384 | 344 | 0.246% | 0.797 | 0.632 |
+| out of time, months -25 to -13 | 139,642 | 37,386 | 344 | 0.246% | 0.797 | 0.632 |
 
 Score PSI between train and test is 0.0006, so the grouped split is clean. Between train and out
-of time it is 0.4404, which is a genuine population shift rather than a diagnostic failure: the
+of time it is 0.4403, which is a genuine population shift rather than a diagnostic failure: the
 out of time bad rate is 6.01 times lower than the training bad rate. Shifting the intercept alone
 to the out of time base rate leaves ranking untouched and cuts calibration error from 0.210% to
 0.053%, which says the drift is a base rate move rather than the model breaking.
@@ -122,11 +122,11 @@ by segment on the out of time sample (`reports/segment_performance.csv`):
 
 | segment | rows | bads | bad rate | Gini |
 |---|---|---|---|---|
-| all scoreable | 139,635 | 344 | 0.246% | 0.797 |
-| active, balance > 0 | 51,305 | 322 | 0.628% | 0.748 |
-| dormant, balance == 0 | 88,330 | 22 | 0.025% | 0.371 |
-| in arrears at observation | 60,314 | 282 | 0.468% | 0.839 |
-| no arrears at observation | 79,321 | 62 | 0.078% | 0.569 |
+| all scoreable | 139,642 | 344 | 0.246% | 0.797 |
+| active, balance > 0 | 51,306 | 322 | 0.628% | 0.748 |
+| dormant, balance == 0 | 88,336 | 22 | 0.025% | 0.371 |
+| in arrears at observation | 60,318 | 282 | 0.468% | 0.839 |
+| no arrears at observation | 79,324 | 62 | 0.078% | 0.569 |
 
 Two things fall out of this. **82% of the bads sit in accounts already in arrears at the
 observation point**, and among accounts with a clean payment record the Gini drops to 0.569. That
@@ -157,9 +157,9 @@ Treated by outcome cell sizes, from `reports/treatment_power.csv`:
 
 | risk outcome | eligible rows | treated rows | treated events | control rate | treated rate | estimable |
 |---|---|---|---|---|---|---|
-| 90+ DPD | 363,239 | 18,508 | **65** | 1.039% | 0.351% | no |
-| 30+ DPD | 349,731 | 18,289 | 106 | 1.293% | 0.580% | marginal |
-| overlimit | 304,967 | 13,004 | 4,397 | 12.090% | 33.813% | yes |
+| 90+ DPD | 363,246 | 18,508 | **65** | 1.039% | 0.351% | no |
+| 30+ DPD | 349,738 | 18,289 | 106 | 1.293% | 0.580% | marginal |
+| overlimit | 304,974 | 13,004 | 4,397 | 12.090% | 33.813% | yes |
 
 65 treated events cannot support an incremental risk estimate at any level of modelling effort,
 so the risk arm runs on 30+ DPD. This is measured and reported rather than quietly substituted.
@@ -182,8 +182,8 @@ straight into the covariate matrix: the treatment amount alone had an AUC of 0.9
 treatment, because it is the treatment. The function now reads the feature frame directly and
 raises on any column matching a treatment or outcome pattern, with tests covering both.
 
-After both fixes the propensity AUC is 0.833, which is genuine and strong selection rather than
-leakage, and 255,006 of 349,731 rows (72.9%) survive trimming, carrying 13,730 treated accounts.
+After both fixes the propensity AUC is 0.834, which is genuine and strong selection rather than
+leakage, and 255,857 of 349,738 rows (73.2%) survive trimming, carrying 13,710 treated accounts.
 
 ### What the model estimates, and why I do not believe it
 
@@ -192,9 +192,9 @@ priced against.
 
 | arm | naive difference | inverse probability weighted | mean cross fitted CATE |
 |---|---|---|---|
-| revenue | 23,407 | 21,903 | 22,119 |
-| 30+ DPD risk | -0.0088 | -0.0074 | -0.0092 |
-| balance | 120,118 | 112,831 | 113,829 |
+| revenue | 23,414 | 21,900 | 21,982 |
+| 30+ DPD risk | -0.0088 | -0.0070 | -0.0097 |
+| balance | 120,138 | 112,689 | 113,137 |
 
 Three things are wrong with this, and the adjustment barely moves any of them:
 
@@ -202,7 +202,7 @@ Three things are wrong with this, and the adjustment barely moves any of them:
 points against a 1.26% base rate, a reduction of roughly 70%. A limit increase does give an
 account headroom, so a small protective effect is not absurd, but 70% is not credible.
 
-**The balance effect implies a 101% drawdown.** Incremental balance of 113,829 against a limit
+**The balance effect implies a 101% drawdown.** Incremental balance of 113,137 against a limit
 increase of 112,500 says accounts draw the entire new line and slightly more. Real drawdown on a
 credit limit increase runs far lower. This is the signature of reverse causality: in this book
 limits were raised in response to accounts pressing against them, so the balance growth partly
@@ -217,11 +217,11 @@ manual underwriter review. Adjusting on card behaviour alone leaves most of the 
 
 This is the finding that matters. Ranking accounts by estimated net benefit and then measuring
 the **observed** treated minus control risk gap inside each band gives a Spearman rank
-correlation of **-0.36**. The estimated net benefit spans 27,270 across bands while the observed
-risk effect spans 1.14 percentage points with no trend, and if anything runs the wrong way.
+correlation of **-0.50**. The estimated net benefit spans 26,459 across bands while the observed
+risk effect spans 0.93 percentage points with no trend, and if anything runs the wrong way.
 
 On revenue the picture is better but modest: the Qini curve for revenue ranked by net benefit
-reaches 1.10 times the random targeting baseline, against 1.00 for a random ranking used as a
+reaches 1.11 times the random targeting baseline, against 1.00 for a random ranking used as a
 sanity check. So there is some real revenue ranking signal and essentially no validated risk
 ranking signal.
 
@@ -237,15 +237,15 @@ to reduce risk. Conservative scenario, from `reports/exposure_impact.csv`:
 
 | share targeted | accounts | incremental revenue | incremental exposure | incremental expected loss | net benefit |
 |---|---|---|---|---|---|
-| 5% | 12,750 | 512.6m | 2,546.1m | 10.8m | 501.8m |
-| 10% | 25,500 | 938.1m | 4,677.8m | 22.0m | 916.1m |
-| 20% | 51,001 | 1,683.7m | 8,445.3m | 50.5m | 1,633.2m |
-| 50% | 127,503 | 3,494.6m | 17,890.7m | 150.0m | 3,344.7m |
+| 5% | 12,792 | 505.8m | 2,437.4m | 11.0m | 494.8m |
+| 10% | 25,585 | 932.6m | 4,539.7m | 22.8m | 909.8m |
+| 20% | 51,171 | 1,675.1m | 8,248.6m | 50.0m | 1,625.1m |
+| 50% | 127,928 | 3,477.6m | 17,617.1m | 144.1m | 3,333.5m |
 
 The ratio is the point. Every unit of incremental revenue comes with roughly **five units of
 incremental exposure**, and that ratio barely improves as targeting gets more selective, which is
 another way of seeing that the ranking is not doing much work. A revenue only view of this policy
-would report the 512.6m and stop. All money figures rest on the stated margin, interchange, CCF
+would report the 505.8m and stop. All money figures rest on the stated margin, interchange, CCF
 and LGD assumptions in `config/config.yaml`, since this dataset carries no interest margin, fee
 schedule or recovery data. Treat the ratios and the ranking as the result and the absolute
 currency amounts as illustrative.
@@ -258,12 +258,12 @@ axis, and a deterioration override that outranks both.
 
 | band | accounts | share | mean score | observed 30+ DPD | mean utilisation |
 |---|---|---|---|---|---|
-| auto increase | 45,473 | 17.8% | 718.5 | 0.048% | 0.21 |
-| manual review | 53,632 | 21.0% | 701.5 | 0.326% | 0.56 |
-| hold | 113,900 | 44.7% | 653.9 | 0.989% | 0.54 |
-| decrease or monitor | 42,001 | 16.5% | 597.4 | 5.519% | 0.57 |
+| auto increase | 46,058 | 18.0% | 719.0 | 0.046% | 0.20 |
+| manual review | 53,145 | 20.8% | 700.7 | 0.344% | 0.57 |
+| hold | 114,426 | 44.7% | 653.7 | 0.987% | 0.54 |
+| decrease or monitor | 42,228 | 16.5% | 597.3 | 5.589% | 0.57 |
 
-The observed risk gradient across bands is 115 to 1 from best to worst, which is the sanity check
+The observed risk gradient across bands is 122 to 1 from best to worst, which is the sanity check
 that matters: the bands were built from score and net benefit, and the outcome they were never
 shown lines up monotonically.
 
@@ -290,24 +290,24 @@ targeting depth fixed, which isolates ranking quality:
 
 | policy | 10% depth | 20% depth | 30% depth |
 |---|---|---|---|
-| **scorecard only** | **12,040** | **14,185** | **16,691** |
-| challenger, utilisation rule | 11,850 | 14,030 | 16,165 |
-| champion, uplift net benefit | 11,741 | 13,718 | 15,836 |
-| random | 11,671 | 13,259 | 14,950 |
+| **scorecard only** | **12,033** | **14,169** | **16,691** |
+| challenger, utilisation rule | 11,817 | 13,951 | 16,059 |
+| champion, uplift net benefit | 11,785 | 13,700 | 15,728 |
+| random | 11,575 | 13,251 | 15,045 |
 
 The ordering is identical at all three depths. The uplift policy beats random targeting, so it is
 not worthless, but it loses to the behavioural scorecard used on its own and to a utilisation rule
 that needs no model at all.
 
 That is consistent with everything Phase 3 measured. The uplift ranking had a rank correlation of
--0.36 against observed effects, so it should not be expected to beat a well behaved risk ranking,
+-0.50 against observed effects, so it should not be expected to beat a well behaved risk ranking,
 and it does not. The scorecard wins because ranking by risk is a genuinely validated signal here
 while ranking by estimated incremental benefit is not.
 
 ### One number to be careful with
 
-In the free depth comparison, treating the entire book scores highest at 32,523 per account
-against 10,125 for treating nobody. That gap is not evidence that limit increases triple account
+In the free depth comparison, treating the entire book scores highest at 32,437 per account
+against 10,133 for treating nobody. That gap is not evidence that limit increases triple account
 value. It is the same unmeasured confounding from Phase 3 arriving in a new place: policies that
 treat more accounts are scored using the treated population, which the lender selected for
 quality, and inverse probability weighting can only correct for what it observes. The matched
@@ -317,7 +317,7 @@ depth table above is the comparison to read, and even that inherits the same cav
 
 Run the utilisation rule or the scorecard cutoff as the production policy, and hold the uplift
 model back until there is a randomised limit increase trial to fit it on. The auto increase band
-covers 17.8% of the book, would grant 5.12bn of additional limit, and creates 6.73bn of
+covers 18.0% of the book, would grant 5.18bn of additional limit, and creates 6.70bn of
 incremental exposure against 1.34bn of incremental revenue under the conservative loss scenario.
 The exposure to revenue ratio is the number to argue about, not the revenue.
 
@@ -328,8 +328,8 @@ I would rather state these than have them found for me.
 **1. The uplift estimate does not survive validation, and Phase 3 says so.** Details above. The
 short version: the risk arm cannot run on 90+ DPD at all with 65 treated events, propensity
 adjustment moves the estimate by only 6% because the lender's decision used information this
-panel does not contain, and the resulting ranking has a rank correlation of -0.36 against the
-observed treated minus control effect. The revenue ranking reaches 1.10 times random, which is
+panel does not contain, and the resulting ranking has a rank correlation of -0.50 against the
+observed treated minus control effect. The revenue ranking reaches 1.11 times random, which is
 real but modest. This is the honest ceiling of an observational uplift estimate on this data.
 
 **2. Treated and control differ so much before modelling that the raw comparison is worthless,

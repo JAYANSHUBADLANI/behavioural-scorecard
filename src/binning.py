@@ -118,15 +118,48 @@ def fit_feature(
     observed_target = target[~missing]
 
     if observed_values.size == 0 or np.unique(observed_values).size < 2:
-        woe_missing, _ = _woe_and_iv(
-            np.array([missing_bads]), np.array([missing_count - missing_bads])
-        )
-        table = pd.DataFrame(
-            [{"feature": name, "bin": MISSING_LABEL, "count": missing_count,
-              "bads": missing_bads, "bad_rate": missing_bads / max(missing_count, 1),
-              "woe": 0.0}]
-        )
-        return FeatureBinning(name, np.array([]), np.array([0.0]), 0.0, table, 0.0)
+        if observed_values.size == 0 or missing_count == 0:
+            # Only one real group exists here, either every value is missing or none
+            # is, so there is nothing to compare missingness against and woe/iv are
+            # both genuinely zero rather than merely unset.
+            woe_missing, iv = 0.0, 0.0
+            rows = []
+            if observed_values.size:
+                observed_bads = int(observed_target.sum())
+                rows.append({"feature": name, "bin": "(-inf, inf]",
+                             "count": int(observed_values.size), "bads": observed_bads,
+                             "bad_rate": observed_bads / observed_values.size, "woe": 0.0})
+            if missing_count:
+                rows.append({"feature": name, "bin": MISSING_LABEL, "count": missing_count,
+                             "bads": missing_bads, "bad_rate": missing_bads / missing_count,
+                             "woe": 0.0})
+            table = pd.DataFrame(rows)
+            table["iv"] = iv
+            woe_array = np.array([0.0])
+        else:
+            # Two real groups: the single constant non-missing bin, and missing. A
+            # single-bin call here would compare the missing group against itself and
+            # always return zero regardless of how strongly missingness predicts bad
+            # rate, so both groups go through the same paired woe/iv computation used
+            # for ordinary bins below.
+            observed_bads = int(observed_target.sum())
+            observed_goods = int(observed_values.size - observed_bads)
+            pair_woe, iv = _woe_and_iv(
+                np.array([observed_bads, missing_bads]),
+                np.array([observed_goods, missing_count - missing_bads]),
+            )
+            observed_woe, woe_missing = float(pair_woe[0]), float(pair_woe[1])
+            table = pd.DataFrame([
+                {"feature": name, "bin": "(-inf, inf]", "count": int(observed_values.size),
+                 "bads": observed_bads, "bad_rate": observed_bads / observed_values.size,
+                 "woe": observed_woe},
+                {"feature": name, "bin": MISSING_LABEL, "count": missing_count,
+                 "bads": missing_bads, "bad_rate": missing_bads / missing_count,
+                 "woe": woe_missing},
+            ])
+            table["iv"] = iv
+            woe_array = np.array([observed_woe])
+        return FeatureBinning(name, np.array([]), woe_array, woe_missing, table, iv)
 
     quantiles = np.linspace(0, 1, config.max_prebins + 1)[1:-1]
     edges = list(np.unique(np.quantile(observed_values, quantiles)))

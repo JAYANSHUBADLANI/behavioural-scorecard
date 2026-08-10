@@ -32,8 +32,8 @@
       "bads": 823
     },
     "out_of_time": {
-      "rows": 139635,
-      "contracts": 37384,
+      "rows": 139642,
+      "contracts": 37386,
       "bads": 344
     }
   },
@@ -63,12 +63,12 @@
       ]
     },
     "out_of_time": {
-      "accounts": 139635,
+      "accounts": 139642,
       "bads": 344,
       "bad_rate_pct": 0.246,
       "gini": 0.7973,
-      "ks": 0.6324,
-      "calibration_error_pct": 0.2097,
+      "ks": 0.6323,
+      "calibration_error_pct": 0.2098,
       "observation_months": [
         -25,
         -13
@@ -76,53 +76,53 @@
     },
     "stability": {
       "score_psi_train_vs_test": 0.0006,
-      "score_psi_train_vs_out_of_time": 0.4404,
+      "score_psi_train_vs_out_of_time": 0.4403,
       "bad_rate_ratio_train_over_out_of_time": 6.01
     },
     "out_of_time_recalibrated": {
-      "intercept_shift": -0.5834,
+      "intercept_shift": -0.5837,
       "gini": 0.7973,
-      "ks": 0.6324,
-      "calibration_error_pct_before": 0.2097,
+      "ks": 0.6323,
+      "calibration_error_pct_before": 0.2098,
       "calibration_error_pct_after": 0.0531
     }
   },
   "top_feature_psi": [
     {
       "feature": "tenure_months",
-      "psi": 1.5418729714270898
+      "psi": 1.5419093455349602
     },
     {
       "feature": "months_since_arrears",
-      "psi": 0.44620457340595876
+      "psi": 0.4461118718494525
     },
     {
       "feature": "balance_slope_12m",
-      "psi": 0.3333924864316964
+      "psi": 0.33339588268418463
     },
     {
       "feature": "atm_share_3m",
-      "psi": 0.29561086758300414
+      "psi": 0.2956445050693875
     },
     {
       "feature": "util_slope_12m",
-      "psi": 0.27922838707311015
+      "psi": 0.27922508614434716
     }
   ],
   "segments_out_of_time": [
     {
       "sample": "out_of_time",
       "segment": "all scoreable",
-      "rows": 139635,
+      "rows": 139642,
       "bads": 344,
-      "bad_rate_pct": 0.2464,
+      "bad_rate_pct": 0.2463,
       "gini": 0.7973,
-      "ks": 0.6324
+      "ks": 0.6323
     },
     {
       "sample": "out_of_time",
       "segment": "active, balance > 0",
-      "rows": 51305,
+      "rows": 51306,
       "bads": 322,
       "bad_rate_pct": 0.6276,
       "gini": 0.7478,
@@ -131,7 +131,7 @@
     {
       "sample": "out_of_time",
       "segment": "dormant, balance == 0",
-      "rows": 88330,
+      "rows": 88336,
       "bads": 22,
       "bad_rate_pct": 0.0249,
       "gini": 0.3715,
@@ -140,7 +140,7 @@
     {
       "sample": "out_of_time",
       "segment": "no arrears at observation",
-      "rows": 79321,
+      "rows": 79324,
       "bads": 62,
       "bad_rate_pct": 0.0782,
       "gini": 0.5688,
@@ -149,10 +149,10 @@
     {
       "sample": "out_of_time",
       "segment": "in arrears at observation",
-      "rows": 60314,
+      "rows": 60318,
       "bads": 282,
-      "bad_rate_pct": 0.4676,
-      "gini": 0.8389,
+      "bad_rate_pct": 0.4675,
+      "gini": 0.8388,
       "ks": 0.6999
     }
   ]
