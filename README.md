@@ -337,7 +337,7 @@ in both directions.** Accounts that received a limit increase default at 0.351% 
 for accounts that did not, so a naive two model uplift estimate would conclude that raising
 credit limits cuts default risk by two thirds. It does not. The lender raised limits precisely on
 accounts that were already behaving well. The same selection runs the other way on overlimit
-breach, where treated accounts come in at 19.777% against 6.528%, because the accounts that get
+breach, where treated accounts come in at 33.813% against 12.089%, because the accounts that get
 limit increases are the high utilisation revolvers who ride close to their limit. Two opposite
 signed biases from one selection process is a good illustration of why the raw difference means
 nothing. Phase 3 does use cross fitted propensity adjustment on pre-treatment behaviour, and it

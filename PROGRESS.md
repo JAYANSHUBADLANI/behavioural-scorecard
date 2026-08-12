@@ -18,7 +18,7 @@ Project complete. All four phases built, run end to end and documented.
 The behavioural scorecard works. The uplift model does not. At equal targeting depth the uplift
 policy is beaten by the scorecard used on its own and by a two line utilisation rule, and it only
 beats random targeting. This is consistent throughout: the uplift ranking had a rank correlation
-of -0.36 against observed treated minus control effects in Phase 3, so it was never going to win
+of -0.50 against observed treated minus control effects in Phase 3, so it was never going to win
 in Phase 4. The recommendation is to run the simple policy and hold the uplift model back until
 there is a randomised limit increase trial to fit it on.
 
