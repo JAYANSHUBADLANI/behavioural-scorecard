@@ -159,7 +159,7 @@ Treated by outcome cell sizes, from `reports/treatment_power.csv`:
 |---|---|---|---|---|---|---|
 | 90+ DPD | 363,246 | 18,508 | **65** | 1.039% | 0.351% | no |
 | 30+ DPD | 349,738 | 18,289 | 106 | 1.293% | 0.580% | marginal |
-| overlimit | 304,974 | 13,004 | 4,397 | 12.090% | 33.813% | yes |
+| overlimit | 304,974 | 13,004 | 4,397 | 12.089% | 33.813% | yes |
 
 65 treated events cannot support an incremental risk estimate at any level of modelling effort,
 so the risk arm runs on 30+ DPD. This is measured and reported rather than quietly substituted.
