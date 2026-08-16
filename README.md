@@ -1,5 +1,7 @@
 # Behavioural Scorecard and Credit Limit Management Strategy
 
+[![tests](https://github.com/JAYANSHUBADLANI/behavioural-scorecard/actions/workflows/tests.yml/badge.svg)](https://github.com/JAYANSHUBADLANI/behavioural-scorecard/actions/workflows/tests.yml)
+
 This is the second of three consumer credit risk projects I am building. The first was an
 application scorecard on the Home Credit Default Risk data, covering acquisition: should a new
 applicant be approved. This one covers the existing customer side. Once an account is open, how
